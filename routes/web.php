@@ -17,3 +17,7 @@ Route::resource('content', ContentController::class);
 use App\Http\Controllers\PortfolioController;
 
 Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio.index');
+
+use App\Http\Controllers\SkillsController;
+
+Route::get('/skills', [SkillsController::class, 'index'])->name('skills.index');
