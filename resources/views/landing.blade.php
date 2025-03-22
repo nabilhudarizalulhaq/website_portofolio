@@ -8,7 +8,7 @@
             <ul class="flex space-x-9">
                 <li><a href="#about" class="hover:text-green-600">About</a></li>
                 <li><a href="#skills" class="hover:text-green-600">Skills</a></li>
-                <li><a href="#portofolio" class="hover:text-green-600">Portfolio</a></li>
+                <li><a href="{{ route('portfolio.index') }}" class="hover:text-green-600">Portfolio</a></li>
                 <li><a href="#contact" class="hover:text-green-600">Contact</a></li>
                 <li><a href="#" class="px-3 py-1 border-2 border-green-600 rounded-lg hover:text-green-900">Download</a></li>
             </ul>

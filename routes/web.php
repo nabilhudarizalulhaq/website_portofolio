@@ -13,3 +13,7 @@ Route::post('/admin/contents', [ContentController::class, 'update'])->name('cont
 Route::delete('/admin/contents/{id}', [ContentController::class, 'destroy'])->name('content.destroy');
 
 Route::resource('content', ContentController::class);
+
+use App\Http\Controllers\PortfolioController;
+
+Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio.index');
