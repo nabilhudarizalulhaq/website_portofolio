@@ -9,7 +9,7 @@
                 <li><a href="{{ route('about.index') }}" class="hover:text-green-600">About</a></li>
                 <li><a href="{{ route('skills.index') }}" class="hover:text-green-600">Skills</a></li>
                 <li><a href="{{ route('portfolio.index') }}" class="hover:text-green-600">Portfolio</a></li>
-                <li><a href="#contact" class="hover:text-green-600">Contact</a></li>
+                <li><a href= "{{ route('contact.index') }}" class="hover:text-green-600">Contact</a></li>
                 <li><a href="#" class="px-3 py-1 border-2 border-green-600 rounded-lg hover:text-green-900">Download</a></li>
             </ul>
         </nav>
@@ -23,7 +23,7 @@
         <p class="text-lg text-gray-600 mt-1">Mobile Developer specializing in Flutter and Laravel for backend solutions. Passionate about building seamless and efficient applications.</p>
         
         <div class="flex items-center space-x-4 mt-6">
-            <a href="mailto:nabil@example.com" class="px-6 py-3 bg-green-500 text-black hover:text-white rounded-lg shadow-md hover:bg-green-600">
+            <a href="{{ route('contact.index') }}" class="px-6 py-3 bg-green-500 text-black hover:text-white rounded-lg shadow-md hover:bg-green-600">
                 Contact Me
             </a>
             <div class="flex items-center space-x-2  px-6 py-3 rounded-lg hover:bg-gray-200">
@@ -84,7 +84,7 @@
     <section id="contact" class="w-full max-w-4xl text-center py-16">
         <h2 class="text-3xl font-bold text-green-600">Get In Touch</h2>
         <p class="text-lg text-gray-600 mt-4">Feel free to reach out for collaboration or freelance work.</p>
-        <a href="mailto:nabil@example.com" class="mt-6 inline-block px-6 py-3 bg-green-600 text-white rounded-lg shadow-md hover:bg-blue-700">Contact Me</a>
+        <a href="{{ route('contact.index') }}" class="mt-6 inline-block px-6 py-3 bg-green-600 text-white rounded-lg shadow-md hover:bg-blue-700">Contact Me</a>
     </section>
 </div>
 @endsection

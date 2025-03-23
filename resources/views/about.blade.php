@@ -10,7 +10,7 @@
                 <li><a href="{{ route('about.index') }}" class="text-green-600 font-semibold">About</a></li>
                 <li><a href="{{ route('skills.index') }}" class="hover:text-green-600">Skills</a></li>
                 <li><a href="{{ route('portfolio.index') }}" class="hover:text-green-600">Portfolio</a></li>
-                <li><a href="#contact" class="hover:text-green-600">Contact</a></li>
+                <li><a href="{{ route('contact.index') }}" class="hover:text-green-600">Contact</a></li>
             </ul>
         </nav>
     </header>

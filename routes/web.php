@@ -25,3 +25,8 @@ Route::get('/skills', [SkillsController::class, 'index'])->name('skills.index');
 use App\Http\Controllers\AboutController;
 
 Route::get('/about', [AboutController::class, 'index'])->name('about.index');
+
+use App\Http\Controllers\ContactController;
+
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');

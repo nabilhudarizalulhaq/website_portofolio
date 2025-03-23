@@ -1,8 +1,4 @@
-@php
-    function getContent($key, $default = '') {
-        return App\Models\Content::where('key', $key)->first()->value ?? $default;
-    }
-@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,11 +13,12 @@
     <nav class="bg-white shadow-md p-4">
         <div class="container mx-auto flex justify-between items-center">
             <a href="/" class="text-xl font-bold">My Portfolio</a>
-            <ul class="flex space-x-4">
-                <li><a href="#about" class="hover:text-blue-500">About</a></li>
-                <li><a href="#projects" class="hover:text-blue-500">Projects</a></li>
-                <li><a href="#contact" class="hover:text-blue-500">Contact</a></li>
-                <li><a href="#" class="hover:text-blue-500">Download</a></li>
+            <ul class="flex space-x-9">
+                <li><a href="{{ route('about.index') }}" class="hover:text-green-600">About</a></li>
+                <li><a href="{{ route('skills.index') }}" class="hover:text-green-600">Skills</a></li>
+                <li><a href="{{ route('portfolio.index') }}" class="hover:text-green-600">Portfolio</a></li>
+                <li><a href= "{{ route('contact.index') }}" class="hover:text-green-600">Contact</a></li>
+                <li><a href="#" class="px-3 py-1 border-2 border-green-600 rounded-lg hover:text-green-900">Download</a></li>
             </ul>
         </div>
     </nav>
