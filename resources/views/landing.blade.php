@@ -6,7 +6,7 @@
         <h1 class="text-2xl font-bold text-green-600">NH.code</h1>
         <nav>
             <ul class="flex space-x-9">
-                <li><a href="#about" class="hover:text-green-600">About</a></li>
+                <li><a href="{{ route('about.index') }}" class="hover:text-green-600">About</a></li>
                 <li><a href="{{ route('skills.index') }}" class="hover:text-green-600">Skills</a></li>
                 <li><a href="{{ route('portfolio.index') }}" class="hover:text-green-600">Portfolio</a></li>
                 <li><a href="#contact" class="hover:text-green-600">Contact</a></li>

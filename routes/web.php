@@ -21,3 +21,7 @@ Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio
 use App\Http\Controllers\SkillsController;
 
 Route::get('/skills', [SkillsController::class, 'index'])->name('skills.index');
+
+use App\Http\Controllers\AboutController;
+
+Route::get('/about', [AboutController::class, 'index'])->name('about.index');
