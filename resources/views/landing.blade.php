@@ -3,7 +3,7 @@
 @section('content')
     <div class="min-h-screen flex flex-col items-center justify-center bg-white text-gray-900">
         <header class="w-full py-6 px-8 bg-white shadow-md fixed top-0 z-50 flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-green-600">NH.code</h1>
+            <h1 class="text-2xl font-bold text-green-600">NH.Technology</h1>
             <nav>
                 <ul class="flex space-x-9">
                     <li><a href="{{ route('about.index') }}" class="hover:text-green-600">About</a></li>
