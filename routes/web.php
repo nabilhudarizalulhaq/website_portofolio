@@ -6,11 +6,10 @@ use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\SkillsController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
 
 // ===== Landing Page =====
-Route::get('/', function () {
-    return view('landing');
-});
+Route::get('/', [HomeController::class, 'index'])->name('landing');
 
 // ===== Content Routes =====
 Route::get('/admin/contents', [ContentController::class, 'index'])->name('content.index');
