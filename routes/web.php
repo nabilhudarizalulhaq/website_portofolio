@@ -20,6 +20,7 @@ Route::resource('content', ContentController::class);
 
 // ===== Portfolio Routes (Frontend) =====
 Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio.index');
+Route::get('/portfolio/{id}', [PortfolioController::class, 'show'])->name('portfolio.show');
 
 // CRUD Portfolio → sudah otomatis ditangani Filament di /admin/portfolios
 // Jadi tidak perlu lagi Route::resource('portfolios', PortfolioController::class);

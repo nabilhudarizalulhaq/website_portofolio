@@ -11,11 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('photos', function (Blueprint $table) {
-            $table->id();
-            $table->string('title')->nullable();
-            $table->string('path'); // simpan path foto
-            $table->timestamps();
+        Schema::table('portfolios', function (Blueprint $table) {
+            // Tambah kolom images bertipe JSON
+            $table->json('images')->nullable()->after('image');
         });
     }
 
@@ -24,6 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('photos');
+        Schema::table('portfolios', function (Blueprint $table) {
+            // Hapus kolom images kalau rollback
+            $table->dropColumn('images');
+        });
     }
 };

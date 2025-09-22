@@ -6,9 +6,9 @@
             <h1 class="text-2xl font-bold text-green-600">NH.Technology</h1>
             <nav>
                 <ul class="flex space-x-9">
-                    <li><a href="/" class="hover:text-green-600">Home</a></li>
-                    <li><a href="{{ route('skills.index') }}" class="text-green-600 font-semibold">Skills</a></li>
-                    <li><a href="{{ route('portfolio.index') }}" class="hover:text-green-600">Portfolio</a></li>
+                    <li><a href="/" class="hover:text-green-600  ">Home</a></li>
+                    <li><a href="{{ route('skills.index') }}" class="hover:text-green-600">Skills</a></li>
+                    <li><a href="{{ route('portfolio.index') }}" class="text-green-600 font-semibold">Portfolio</a></li>
                     <li><a href="{{ route('contact.index') }}" class="hover:text-green-600">Contact</a></li>
                 </ul>
             </nav>
@@ -43,12 +43,10 @@
                         @endif
 
                         {{-- Link --}}
-                        @if ($portfolio->link)
-                            <a href="{{ $portfolio->link }}" target="_blank"
-                                class="mt-4 inline-block px-4 py-2 bg-green-500 text-white rounded-lg shadow-md hover:bg-green-600">
-                                View Details
-                            </a>
-                        @endif
+                        <a href="{{ route('portfolio.show', $portfolio->id) }}"
+                            class="mt-4 inline-block px-4 py-2 bg-green-500 text-white rounded-lg shadow-md hover:bg-green-600">
+                            View Details
+                        </a>
                     </div>
                 @empty
                     <p class="text-gray-500 col-span-3">No portfolio projects available yet.</p>

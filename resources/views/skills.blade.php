@@ -6,9 +6,9 @@
             <h1 class="text-2xl font-bold text-green-600">NH.Technology</h1>
             <nav>
                 <ul class="flex space-x-9">
-                    <li><a href="/" class="hover:text-green-600">Home</a></li>
+                    <li><a href="/" class="hover:text-green-600 ">Home</a></li>
                     <li><a href="{{ route('skills.index') }}" class="text-green-600 font-semibold">Skills</a></li>
-                    <li><a href="{{ route('portfolio.index') }}" class="hover:text-green-600">Portfolio</a></li>
+                    <li><a href="{{ route('portfolio.index') }}" class="hover:text-green-600 ">Portfolio</a></li>
                     <li><a href="{{ route('contact.index') }}" class="hover:text-green-600">Contact</a></li>
                 </ul>
             </nav>
