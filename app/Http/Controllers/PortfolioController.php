@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class PortfolioController extends Controller
 {
+
+    public function landing()
+    {
+        // hanya 3 terakhir untuk landing
+        $portfolios = Portfolio::latest()->take(3)->get();
+        return view('landing', compact('portfolios'));
+    }
     public function index()
     {
         $portfolios = Portfolio::latest()->get();
