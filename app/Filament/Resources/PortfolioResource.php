@@ -36,6 +36,15 @@ class PortfolioResource extends Resource
                     ->maxSize(2048) // 2MB
                     ->required(),
 
+                Forms\Components\FileUpload::make('images')
+                    ->label('Galeri Proyek')
+                    ->image()
+                    ->multiple()
+                    ->reorderable()
+                    ->directory('portfolios/gallery')
+                    ->maxFiles(8)
+                    ->maxSize(2048),
+
                 Forms\Components\TextInput::make('link')
                     ->label('Project Link')
                     ->url()

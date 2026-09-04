@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ContactMessage;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -13,19 +14,14 @@ class ContactController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name'    => 'required|string|max:255',
-            'email'   => 'required|email',
-            'message' => 'required|string|min:10',
+            'email'   => 'required|email:rfc|max:255',
+            'message' => 'required|string|min:10|max:5000',
         ]);
 
-        // Simpan atau kirim email (Opsional)
-        Mail::raw($request->message, function ($message) use ($request) {
-            $message->to('admin@example.com')
-                    ->subject('New Contact Message from ' . $request->name)
-                    ->replyTo($request->email);
-        });
+        ContactMessage::create($validated);
 
-        return back()->with('success', 'Your message has been sent successfully!');
+        return back()->with('success', 'Pesan berhasil dikirim. Saya akan menghubungi Anda secepatnya.');
     }
 }

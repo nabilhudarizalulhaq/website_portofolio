@@ -1,48 +1,25 @@
 <?php
 
-namespace App\Filament\Resources;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-use App\Filament\Resources\ContactMessageResource\Pages;
-use App\Models\ContactMessage;
-use Filament\Forms;
-use Filament\Resources\Resource;
-use Filament\Tables;
-
-class ContactMessageResource extends Resource
+return new class extends Migration
 {
-    protected static ?string $model = ContactMessage::class;
-    protected static ?string $navigationIcon = 'heroicon-o-envelope';
-    protected static ?string $navigationLabel = 'Contact Messages';
-    protected static ?string $pluralModelLabel = 'Messages';
-
-    public static function form(Forms\Form $form): Forms\Form
+    public function up(): void
     {
-        return $form
-            ->schema([
-                Forms\Components\TextInput::make('name')->disabled(),
-                Forms\Components\TextInput::make('email')->disabled(),
-                Forms\Components\Textarea::make('message')->disabled(),
-            ]);
+        Schema::create('contact_messages', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('email');
+            $table->text('message');
+            $table->timestamps();
+            $table->index('created_at');
+        });
     }
 
-    public static function table(Tables\Table $table): Tables\Table
+    public function down(): void
     {
-        return $table
-            ->columns([
-                Tables\Columns\TextColumn::make('name')->sortable()->searchable(),
-                Tables\Columns\TextColumn::make('email')->sortable()->searchable(),
-                Tables\Columns\TextColumn::make('message')->limit(50),
-                Tables\Columns\TextColumn::make('created_at')->dateTime('d M Y H:i'),
-            ])
-            ->filters([])
-            ->actions([]) // biar admin hanya bisa lihat
-            ->bulkActions([]);
+        Schema::dropIfExists('contact_messages');
     }
-
-    public static function getPages(): array
-    {
-        return [
-            'index' => Pages\ListContactMessages::route('/'),
-        ];
-    }
-}
+};
