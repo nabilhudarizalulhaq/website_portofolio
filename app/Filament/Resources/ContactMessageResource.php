@@ -3,36 +3,27 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ContactMessageResource\Pages;
-use App\Filament\Resources\ContactMessageResource\RelationManagers;
 use App\Models\ContactMessage;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class ContactMessageResource extends Resource
 {
     protected static ?string $model = ContactMessage::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-envelope';
+    protected static ?string $navigationLabel = 'Pesan Masuk';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('email')
-                    ->email()
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('message')
-                    ->required()
-                    ->columnSpanFull(),
+                Forms\Components\TextInput::make('name')->disabled(),
+                Forms\Components\TextInput::make('email')->disabled(),
+                Forms\Components\Textarea::make('message')->disabled()->columnSpanFull(),
             ]);
     }
 
@@ -44,6 +35,7 @@ class ContactMessageResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('email')
                     ->searchable(),
+                Tables\Columns\TextColumn::make('message')->limit(80)->wrap(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -53,12 +45,8 @@ class ContactMessageResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
-            ->filters([
-                //
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-            ])
+            ->filters([])
+            ->actions([])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
@@ -66,19 +54,10 @@ class ContactMessageResource extends Resource
             ]);
     }
 
-    public static function getRelations(): array
-    {
-        return [
-            //
-        ];
-    }
-
     public static function getPages(): array
     {
         return [
             'index' => Pages\ListContactMessages::route('/'),
-            'create' => Pages\CreateContactMessage::route('/create'),
-            'edit' => Pages\EditContactMessage::route('/{record}/edit'),
         ];
     }
 }

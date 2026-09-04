@@ -12,18 +12,13 @@ class Portfolio extends Model
     protected $fillable = [
         'title',
         'description',
-        'image',       // thumbnail utama
-        'images',      // gallery (json)
+        'image',
+        'images',
         'link',
         'tech_stack',
     ];
 
     protected $casts = [
-        'images' => 'array', // otomatis cast ke array
+        'images' => 'array',
     ];
-
-    public function portfolio()
-{
-    return $this->belongsTo(Portfolio::class);
-}
 }

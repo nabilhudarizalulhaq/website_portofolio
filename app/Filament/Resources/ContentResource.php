@@ -1,32 +1,47 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Filament\Resources;
 
-use Illuminate\Http\Request;
+use App\Filament\Resources\ContentResource\Pages;
 use App\Models\Content;
+use Filament\Forms;
+use Filament\Forms\Form;
+use Filament\Resources\Resource;
+use Filament\Tables;
+use Filament\Tables\Table;
 
-class ContentController extends Controller
+class ContentResource extends Resource
 {
-    // Menampilkan semua konten di admin panel
-    public function index()
+    protected static ?string $model = Content::class;
+    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static ?string $navigationLabel = 'Konten';
+
+    public static function form(Form $form): Form
     {
-        $contents = Content::all();
-        return view('admin.contents.index', compact('contents'));
+        return $form->schema([
+            Forms\Components\TextInput::make('key')->required()->unique(ignoreRecord: true)->maxLength(255),
+            Forms\Components\Textarea::make('value')->required()->rows(8)->columnSpanFull(),
+        ]);
     }
 
-    // Menyimpan atau memperbarui konten
-    public function update(Request $request)
+    public static function table(Table $table): Table
     {
-        foreach ($request->contents as $key => $value) {
-            Content::updateOrCreate(['key' => $key], ['value' => $value]);
-        }
-        return redirect()->back()->with('success', 'Content updated successfully');
+        return $table
+            ->columns([
+                Tables\Columns\TextColumn::make('key')->searchable()->sortable(),
+                Tables\Columns\TextColumn::make('value')->limit(80)->wrap(),
+                Tables\Columns\TextColumn::make('updated_at')->label('Diperbarui')->since()->sortable(),
+            ])
+            ->actions([Tables\Actions\EditAction::make(), Tables\Actions\DeleteAction::make()])
+            ->bulkActions([Tables\Actions\DeleteBulkAction::make()]);
     }
 
-    // Menghapus konten
-    public function destroy($id)
+    public static function getPages(): array
     {
-        Content::findOrFail($id)->delete();
-        return redirect()->back()->with('success', 'Content deleted successfully');
+        return [
+            'index' => Pages\ListContents::route('/'),
+            'create' => Pages\CreateContent::route('/create'),
+            'edit' => Pages\EditContent::route('/{record}/edit'),
+        ];
     }
 }
